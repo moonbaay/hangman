@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    font-family:'Poppins', sans-serif;
+}
+h1{
+    text-align: center;
+}
+.man-center{
+    display: grid;
+    place-content: center;
+}
+.man-container{
+    font-size:3rem;
+}
+.head::after{
+    content: "O";
+    margin-left: 10px;
+    margin-bottom: -10px;
+}
+.center-body::before{
+    content: "|";
+    margin-top: -20px;
+}
+.left-arm::before{
+    content: "/";
+}
+.right-arm::after{
+    content: "\\";
+}
+.left-leg::before{
+    content: "/";
+}
+.right-leg::after{
+    content: " \\";
+}

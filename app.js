@@ -53,7 +53,7 @@ function printWordState(answer, list) {
 // get user input guess character
 //-----------------
 function getGuess(answer, list) {
-  var guessChar = prompt("enter your character: ");
+  // var guessChar = prompt("enter your character: ");
 
   list.push(guessChar.charAt(0));
 
