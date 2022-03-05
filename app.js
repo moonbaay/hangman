@@ -6,20 +6,20 @@
 //-----------------
 function getWord() {
   var words = [
-    "red",
-    "yellow",
-    "pink",
-    "blue",
-    "green",
-    "purple",
-    "violet",
-    "magenta",
-    "brown",
-    "black",
-    "white",
-    "skyblue",
-    "orange",
-    "teal",
+    "spider",
+    "basketball",
+    "football",
+    "reward",
+    "chicken",
+    "comet",
+    "galaxy",
+    "television",
+    "herb",
+    "peppermint",
+    "lavender",
+    "waterfall",
+    "skydiving",
+    "cucumber",
   ];
 
   let randomIndex = Math.floor(Math.random() * words.length);
