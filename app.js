@@ -47,7 +47,6 @@ function printWordState(answer, list) {
   return answer.length == correctLetter;
 }
 
-// printWordState(word, guessList);
 
 // ----------------
 // get user input guess character
@@ -59,7 +58,6 @@ function getGuess(answer, list) {
 
   return answer.includes(guessChar);
 }
-// console.log(getGuess(guessChar, word, guessList));
 
 // ----------------
 // create hangman display
@@ -136,9 +134,6 @@ var guessList = [];
 const word = getWord();
 while(true){
 
-    
-    
-
     displayDraw(life);
 
     printWordState(word,guessList);
@@ -160,3 +155,6 @@ while(true){
         
     }
 }
+
+var input = document.querySelector(".input");
+const submitBtn = document.querySelector(".submit");
