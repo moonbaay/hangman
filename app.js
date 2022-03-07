@@ -1,6 +1,3 @@
-
-
-
 // ----------------
 // get random word
 //-----------------
@@ -34,36 +31,31 @@ function getWord() {
 
 function printWordState(answer, list) {
   let correctLetter = 0;
+  var status = null;
+  var blank = document.querySelector('.blank');
   console.log(answer);
-  for (let i = 0; i < answer.length; i++) {
-    if (list.includes(answer.charAt(i))) {
-      console.log(answer.charAt(i));
-      correctLetter++;
-    } else {
-      console.log("_ ");
-    }
-  }
-
+  status = answer.split('').map(letter =>(list.indexOf(letter)>= 0 ? letter : "_")).join('');
+  blank.innerHTML = status;
   return answer.length == correctLetter;
 }
-
 
 // ----------------
 // get user input guess character
 //-----------------
-function getGuess(answer, list) {
-  // var guessChar = prompt("enter your character: ");
+// function getGuess(answer, list) {
+//   // var guessChar = prompt("enter your character: ");
+//   const guessChar = document.querySelector(".input").value;
+//   list.push(guessChar.charAt(0));
 
-  list.push(guessChar.charAt(0));
-
-  return answer.includes(guessChar);
-}
+//   return answer.includes(guessChar);
+// }
 
 // ----------------
 // create hangman display
 //-----------------
 
 function displayDraw(life) {
+  const manContainer = document.querySelector(".man-container");
   switch (life) {
     case 0:
       console.log("-------------");
@@ -115,46 +107,115 @@ function displayDraw(life) {
       console.log("|         ");
       console.log("|         ");
       console.log("|");
+      
+      // const head = document.querySelector(".head");
+      // var after = head.querySelector('::after');
+      // after.style.visibility = "visible";
       break;
-    case 6:
-      console.log("-------------");
-      console.log("|          |");
-      console.log("|          ");
-      console.log("|         ");
-      console.log("|         ");
-      console.log("|");
-      break;
+    // case 6:
+    //   console.log("-------------");
+    //   console.log("|          |");
+    //   console.log("|          ");
+    //   console.log("|         ");
+    //   console.log("|         ");
+    //   console.log("|");
+      
+    //   break;
     default:
-        break;
+      break;
   }
 }
 
 let life = 6;
 var guessList = [];
 const word = getWord();
-while(true){
 
-    displayDraw(life);
+const showLife = document.querySelector('.life');
+const submitBtn = document.querySelector(".submit");
+const alertMessage = document.querySelector(".alert");
+const showAnswer = document.querySelector(".answer");
 
-    printWordState(word,guessList);
 
+submitBtn.addEventListener("click", function () {
+  displayDraw(life);
 
-    if(!getGuess(word,guessList)){
-        life--;
-    }
+  printWordState(word, guessList);
 
-    if(printWordState(word,guessList)){
-        
-       
-        console.log("you win");
-        break;
-       
-    }else{
+  if (!getGuess(word, guessList)) {
+    life--;
+    showLife.textContent = life;
+  }
+
+  if (printWordState(word, guessList)) {
+    alertMessage.textContent = `Congratulation you win`;
+    showAnswer.textContent = word;
+    // console.log("you win");
+    // break;
+      if (!printWordState(word, guessList)) {
         displayDraw(life);
-        console.log('sorry try again');
-        
-    }
+
+        alertMessage.textContent = "sorry try again";
+      }
+    
+  } 
+
+  if (life < 0) {
+    alertMessage.textContent = "you use up all your life sorry :(";
+  }
+
+});
+
+function getLetterBtn(){
+  let letterBtnHTML = "abcdefghiljklmnopqrstuvwxyz".split('').map((letter)=>
+  `
+    <button class="letter-btn" id="`+letter+`">`+letter+`</button>
+  `).join("");
+
+  document.querySelector('.keyboard').innerHTML = letterBtnHTML;
+
+  
 }
 
-var input = document.querySelector(".input");
-const submitBtn = document.querySelector(".submit");
+
+function generateButtons() {
+  let buttonsHTML = "abcdefghijklmnopqrstuvwxyz"
+    .split("")
+    .map(
+      (letter) =>
+        `<button class="btn btn-lg btn-primary m-2" id='` +letter +`' onClick="handleGuess('` +letter +`')">` +letter +`</button>
+    `
+    )
+    .join("");
+
+  document.getElementById("keyboard").innerHTML = buttonsHTML;
+
+  
+}
+
+getLetterBtn();
+
+const inputLetter = document.querySelectorAll(".letter-btn");
+
+function getGuess(answer, list) {
+  // var guessChar = prompt("enter your character: ");
+  const guessChar = inputLetter.forEach((item) => {
+    item.addEventListener("click", function () {
+      console.log(item.outerText);
+    });
+  });
+  list.push(guessChar.charAt(0));
+
+  return answer.includes(guessChar);
+}
+
+const guessChar = () =>{
+  
+  return inputLetter.forEach((item) => {
+    item.addEventListener("click", function () {
+      item.outerText;
+    });
+  });
+} 
+
+console.log(guessChar())
+ 

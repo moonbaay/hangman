@@ -9,15 +9,16 @@
 </head>
 <body>
     
-    <head><h1>Welcome to Hangman Game</h1></head>
-
-    <div class="blank-container"><span class="blank">_</span></div>
+    <header><h1>Welcome to Hangman Game</h1></header>
+<section class="section-center">
+    <div class="blank-container"><div class="blank"></div></div>
     <div class="input-container">
         <input type="text" class="input">
+        <div class="keyboard"></div>
         <button class="submit">Submit</button>
         <button class="new-game-btn">new game</button>
     </div>
-    
+    <div class="life"></div>
     <div class="man-center">
         <div class="man-container">
             <div class="rope">|</div>
@@ -27,10 +28,10 @@
          </div>
     </div>
 
-    <h3 class="alert">congratulation you win</h3>
+    <h3 class="alert"></h3>
     <h3 class="answer"></h3>
 
-
+</section>
     <script src="/app.js"></script>
 </body>
 </html>

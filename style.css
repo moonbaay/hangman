@@ -20,18 +20,23 @@ h1{
     margin-bottom: -10px;
 }
 .center-body::before{
+    visibility: hidden;
     content: "|";
     margin-top: -20px;
 }
 .left-arm::before{
+    visibility: hidden;
     content: "/";
 }
 .right-arm::after{
+    visibility: hidden;
     content: "\\";
 }
 .left-leg::before{
+    visibility: hidden;
     content: "/";
 }
 .right-leg::after{
+    visibility: hidden;
     content: " \\";
 }
