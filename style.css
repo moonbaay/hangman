@@ -40,3 +40,14 @@ h1{
     visibility: hidden;
     content: " \\";
 }
+
+/* ------------------------ */
+/*     alert message        */
+/* ------------------------ */
+
+.alert-incorrect{
+    color: red;
+}
+.alert-completed{
+    color: green;
+}

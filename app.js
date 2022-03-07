@@ -30,25 +30,14 @@ function getWord() {
 //-----------------
 
 function printWordState(answer, list) {
-  let correctLetter = 0;
+
   var status = null;
   var blank = document.querySelector('.blank');
   console.log(answer);
   status = answer.split('').map(letter =>(list.indexOf(letter)>= 0 ? letter : "_")).join('');
   blank.innerHTML = status;
-  return answer.length == correctLetter;
+  return status.includes(answer);
 }
-
-// ----------------
-// get user input guess character
-//-----------------
-// function getGuess(answer, list) {
-//   // var guessChar = prompt("enter your character: ");
-//   const guessChar = document.querySelector(".input").value;
-//   list.push(guessChar.charAt(0));
-
-//   return answer.includes(guessChar);
-// }
 
 // ----------------
 // create hangman display
@@ -128,15 +117,18 @@ function displayDraw(life) {
 
 let life = 6;
 var guessList = [];
-const word = getWord();
+var word = getWord();
 
 const showLife = document.querySelector('.life');
-const submitBtn = document.querySelector(".submit");
 const alertMessage = document.querySelector(".alert");
-const showAnswer = document.querySelector(".answer");
+const newGame  = document.querySelector('.new-game-btn');
+
+// ----------------
+// create keyboard
+//-----------------
 
 function getLetterBtn(){
-  let letterBtnHTML = "abcdefghiljklmnopqrstuvwxyz".split('').map((letter)=>
+  let letterBtnHTML = "abcdefghijklmnopqrstuvwxyz".split('').map((letter)=>
   `
     <button class="letter-btn" id="`+letter+`">`+letter+`</button>
   `).join("");
@@ -145,50 +137,69 @@ function getLetterBtn(){
 
   
 }
-
-
 getLetterBtn();
 
 const inputLetter = document.querySelectorAll(".letter-btn");
 
+// ----------------
+// get user input guess character
+//-----------------
 function getGuess(answer, list) {
-  // var guessChar = prompt("enter your character: ");
-  const guessChar = inputLetter.forEach((item) => {
+
+  inputLetter.forEach((item) => {
+
     item.addEventListener("click", function () {
+
       console.log(item.outerText);
       list.push(item.outerText.charAt(0));
+      printWordState(answer,list);
+      
+      if(printWordState(answer,list)){
+        displayAlert(`Congratulation you complete the word: ${word}`,`completed`)
+      }
+       if(!answer.includes(item.outerText)){
+        displayAlert(`oops try again`, `incorrect`);
+        setTimeout(() => {
+            alertMessage.textContent = ""
+            alertMessage.classList.remove(`alert-incorrect`);
+        }, 3000);  
+       
+            life--;
+          displayDraw(life);
+        }
+      showLife.textContent = `Life: ${life}`;
+     
     });
-  });
-  
 
-  return answer.includes(guessChar);
+    
+  });
+
 }
 
-submitBtn.addEventListener("click", function () {
-  displayDraw(life);
+// ----------------
+// display alert
+//-----------------
+function displayAlert(text,action){
 
-  printWordState(word, guessList);
+    alertMessage.textContent = text;
+    alertMessage.classList.add(`alert-${action}`);
+    //remove alert
+    // setTimeout(() => {
 
-  if (!getGuess(word, guessList)) {
-    life--;
-    showLife.textContent = life;
-  }
+    //   alertMessage.textContent = ""
+    //   alertMessage.classList.remove(`alert-${action}`);
+      
+    // }, 3000);
+}
 
-  if (printWordState(word, guessList)) {
-    alertMessage.textContent = `Congratulation you win`;
-    showAnswer.textContent = word;
-    // console.log("you win");
-    // break;
-    if (!printWordState(word, guessList)) {
-      displayDraw(life);
 
-      alertMessage.textContent = "sorry try again";
-    }
-  }
+newGame.addEventListener('click',function(){
+  word =getWord();
+  getGuess(word,guessList)
+  printWordState(word,guessList);
+  life = 6;
+})
 
-  if (life < 0) {
-    alertMessage.textContent = "you use up all your life sorry :(";
-  }
-});
+
 
  
