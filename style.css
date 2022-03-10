@@ -2,52 +2,213 @@
 
 body{
     font-family:'Poppins', sans-serif;
+    margin: 0;
+    background-color: #07091d
+}
+.section-center{
+    width: 80%;
+    margin: 0 10%;
 }
 h1{
     text-align: center;
+    color: 	#e54ed0;
+    margin-top:3rem;
 }
 .man-center{
     display: grid;
     place-content: center;
+    /* border: 2px solid white; */
 }
 .man-container{
     font-size:3rem;
+    height: 300px;
+    position: relative;
+    margin: 2rem 0;
 }
-.head::after{
+.head{
     visibility: hidden;
-    content: "O";
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 70%;
     margin-left: 10px;
     margin-bottom: -10px;
 }
-.center-body::before{
-    visibility: hidden;
-    content: "|";
-    margin-top: -20px;
+.head-inside{
+    
+    width: 40px;
+    height: 40px;
+    background-color: #07091d;
+    border-radius: 70%;
+    top:1.5%;
+    left: 25%;
+    position: absolute;
 }
-.left-arm::before{
+.center-body{
     visibility: hidden;
-    content: "/";
+    position: absolute;
+    left: 55%;
+    bottom:45%;
+    width: 5px;
+    height: 120px;
+    background-color: white;
+    border-radius: 40%;
+
 }
-.right-arm::after{
+.left-arm{
     visibility: hidden;
-    content: "\\";
+    position: absolute;
+    left: 80%;
+    bottom:60%;
+    width: 5px;
+    height: 60px;
+    background-color: white;
+    border-radius: 40%;
+    transform: rotate(-25deg);
+    
 }
-.left-leg::before{
+.right-arm{
     visibility: hidden;
-    content: "/";
+     position: absolute;
+    left: 30%;
+    bottom:60%;
+    width: 5px;
+    height: 60px;
+    background-color: white;
+    border-radius: 40%;
+    transform: rotate(25deg);
+    
 }
-.right-leg::after{
+.left-leg{
     visibility: hidden;
-    content: " \\";
+     position: absolute;
+    left: 30%;
+    bottom:25%;
+    width: 5px;
+    height: 70px;
+    background-color: white;
+    border-radius: 40%;
+    transform: rotate(25deg);
+    
+}
+.right-leg{
+    visibility: hidden;
+    position: absolute;
+    left: 82%;
+    bottom:25%;
+    width: 5px;
+    height: 70px;
+    background-color: white;
+    border-radius: 40%;
+    transform: rotate(-27deg);
+    
 }
 
+.ground{
+    width: 200px;
+    height: 10px;
+    background-color: white;
+    position: absolute;
+    bottom: 10%;
+    right: 10%;
+}
+.pole{
+    width: 5px;
+    height: 300px;
+    background-color: white;
+    position: absolute;
+    bottom: 10%;
+    right:200%;
+}
+.pole-1{
+    width: 150px;
+    height: 5px;
+    background-color: white;
+    position: absolute;
+    bottom: 110%;
+    right:15%;
+}
+.pole-2{
+    width: 5px;
+    height: 35px;
+    background-color: white;
+    position: absolute;
+    bottom: 100%;
+    right:40%
+}
 /* ------------------------ */
 /*     alert message        */
 /* ------------------------ */
-
+.bottom-grid{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* place-content: start center; */
+}
 .alert-incorrect{
-    color: red;
+    color: rgb(255, 148, 148);
 }
 .alert-completed{
-    color: green;
+    color: rgb(142, 194, 255);
 }
+.alert{
+    font-size: 2rem;
+    text-transform: capitalize;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+}
+.blank{
+    font-size: 3.5rem;
+    color: #ffe4f2;
+    text-align: center;
+    padding-bottom: 2rem;
+    
+}
+.input-container{
+    
+    width: 100%;
+    display: grid;
+    place-content: center;
+    place-items: center;
+}
+.letter-btn{
+    cursor: pointer;
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    text-transform: capitalize;
+    background-color: transparent;
+    border: none;
+    color: #e54ed0;
+}
+.letter-btn:hover{
+    /* background-color: #ffe4f2; */
+    border: 2px solid #ffe4f2;
+    border-radius: 10px;
+    transition: all linear .2s;
+}
+.new-game-btn{
+    background-color: transparent;
+    border: 2px solid #ff369e;
+    color:#ffe4f2;
+    border-radius: 1.5rem;
+    width: 150px;
+    height: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    text-transform: capitalize;
+   
+}
+.new-game-btn:hover{
+    background-color: white;
+    color: black;
+    transition: all ease-out .3s;
+}
+.life{
+    margin: 1rem;
+    font-size: 2rem;
+    color: #ffffff;
+    
+}
+
