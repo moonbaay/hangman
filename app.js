@@ -30,7 +30,6 @@ function getWord() {
   ];
 
   let randomIndex = Math.floor(Math.random() * words.length);
-
   var randomWord = words[randomIndex];
   word = randomWord;
 }
